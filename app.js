@@ -118,7 +118,18 @@ function convertToRoman() {
     console.log("finalPropertiesArr:");
     console.log(finalPropertiesArr);
     
+    //3-d-
+    //finalPropertiesArr --> romanArr
+    //["_100", "_10", "_10", "_5"] --> ["C", "X", "X", "V"]
+    let romanArr = finalPropertiesArr.map(item => number[item]);
+    console.log("romanArr:");
+    console.log(romanArr);
+
     
+    //4-
+    let str = romanArr.join("");
+    document.getElementById("result").innerText = str;
+    return str;
 }
 
 function numberToProperties(digit, digitPositon) {
