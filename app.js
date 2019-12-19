@@ -64,11 +64,18 @@ function convertToRoman() {
             break;
         }
     }
-    console.log(arr);
-
+    //
+    
+    //3- How to start converting?
+    //a- create propertiesArr and fill it will digits from 'arr' preceeded by an underscore '_'
+    //b- create 'romanArr', and fill it with values of 'number' object properties corresponding to each item in 'arr'
+    
+    //3-a-
+    let propertiesArr = arr.map(item => "_"+item);
+    
 
     let str="";
-    document.getElementById("result").innerText = str;
+    document.getElementById("result").innerText = arr;
     return num;
 }
 
