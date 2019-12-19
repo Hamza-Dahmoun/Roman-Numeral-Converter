@@ -51,6 +51,20 @@ function convertToRoman() {
     let num = document.getElementById("textInput").value;
     let arr = num.split("");
     
+    //2-
+    let index=0;
+    while(index<arr.length){
+        //we'll delete any zero located on the left side
+        if(arr[index]==0){
+            arr.splice(index,1);
+            //we told it to delete one item starting from the item in the index 'index'
+        }
+        else{
+            //since this item is a number greater than 0, lets stop checking
+            break;
+        }
+    }
+    console.log(arr);
 
 
     let str="";
