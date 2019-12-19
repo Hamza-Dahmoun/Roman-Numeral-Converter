@@ -84,6 +84,34 @@ function convertToRoman() {
     console.log(propertiesMidArr);
 
 
+
+    //3-b-
+    //propertiesMidArr --> propertiesArr
+    //[["_1", 3], ["_1", "_1", 2], ["_5", 1]] --> [["_100"], ["_10", "_10"], ["_5"]]
+    let propertiesArr = [];
+    for(let i=0; i<propertiesMidArr.length; i++){
+        let numberOfZeros = propertiesMidArr[i][propertiesMidArr[i].length-1];
+        let zeros = "";
+        for(let l=1; l<numberOfZeros; l++){
+            zeros = zeros+"0";
+        }
+        let props=[];
+        for(let j=0; j<propertiesMidArr[i].length; j++){
+            if(typeof propertiesMidArr[i][j] == "number"){
+                //so this item is last item that contain the position of the digit, don't do anything
+            }
+            else{
+                //lets add the zeors to the right of the prop and push it
+                props.push(propertiesMidArr[i][j] + zeros);
+            }            
+        }
+        propertiesArr.push(props);
+    }
+    console.log("propertiesArr:");
+    console.log(propertiesArr);
+
+
+    
 }
 
 function numberToProperties(digit, digitPositon) {
