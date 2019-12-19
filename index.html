@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Roman Numeral Converter</title>
+    <script src="app.js"></script>
+    <style>
+        body {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+        }
+
+        label {
+            font-size: 20px;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input {
+            height: 35px;
+            border-radius: 2px;
+            border: 1px solid #efefef;
+            text-align: center;
+        }
+
+        p {
+            font-size: 40px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Roman Numeral Converter</h1>
+    <div>
+        <label for="textInput">Enter Your Number</label>
+        <input type="text" id="textInput" onkeyup="convert()" placeholder="0123456789">
+    </div>
+
+    <p id="result"></p>
+</body>
+
+</html>
