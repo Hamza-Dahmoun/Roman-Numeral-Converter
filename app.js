@@ -111,6 +111,13 @@ function convertToRoman() {
     console.log(propertiesArr);
 
 
+    //3-c- 
+    //propertiesArr --> finalPropertiesArr
+    //[["_100"], ["_10", "_10"], ["_5"]] --> ["_100", "_10", "_10", "_5"]
+    let finalPropertiesArr = propertiesArr.join(",").split(",");
+    console.log("finalPropertiesArr:");
+    console.log(finalPropertiesArr);
+    
     
 }
 
