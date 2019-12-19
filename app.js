@@ -39,44 +39,100 @@ var number = {
     _500: "D",
     _1000: "M"
 };
-function convertToRoman() {    
+function convertToRoman() {
     //How?
     //1- get number & convert it to array of digits
     //2- delete any '0' digits in the begining of the array, bcuz it has no value
     //3- convert the digits in the array to roman starting from the right side, and using 'number' object
-    //4- Array.join("") the converted array, and return the resulted string
+    //4- do Array.join("") the converted array, and return the resulted string
 
 
     //1- 
     let num = document.getElementById("textInput").value;
     let arr = num.split("");
-    
+
     //2-
-    let index=0;
-    while(index<arr.length){
+    let index = 0;
+    while (index < arr.length) {
         //we'll delete any zero located on the left side
-        if(arr[index]==0){
-            arr.splice(index,1);
+        if (arr[index] == 0) {
+            arr.splice(index, 1);
             //we told it to delete one item starting from the item in the index 'index'
         }
-        else{
+        else {
             //since this item is a number greater than 0, lets stop checking
             break;
         }
     }
     //
-    
-    //3- How to start converting?
-    //a- create propertiesArr and fill it will digits from 'arr' preceeded by an underscore '_'
-    //b- create 'romanArr', and fill it with values of 'number' object properties corresponding to each item in 'arr'
-    
-    //3-a-
-    let propertiesArr = arr.map(item => "_"+item);
-    
 
-    let str="";
-    document.getElementById("result").innerText = arr;
-    return num;
+    //3- How to start converting?
+    //a- create 'propertiesMidArr' and fill it will digits from 'arr' preceeded by an underscore '_' and accompagnied with its position in the number entered by user
+    //b- create 'propertiesArr' from 'propertiesMidArr', they are the same but 'propertiesArr' contains zeros on the right of each item, based on the 'position value' it is accompanied with
+    //c- create 'finalPropertiesArr' from 'propertiesArr', 'propertiesArr' is an array of arrays, but 'finalPropertiesArr' will be an array of all elements of 'propertiesArr'
+    //d- create 'rmanArr' from 'finalPropertiesArr' and 'number' object
+
+
+
+
+
+    //3-a-
+    //125 --> [["_1", 3], ["_1", "_1", 2], ["_5", 1]]
+    //the args of map() below are: 'item' which is an element of 'arr', and 'index' which is the index of 'item' in 'arr'
+    let propertiesMidArr = arr.map((item, index) => numberToProperties(item, arr.length-index));    
+    console.log("propertiesMidArr:");
+    console.log(propertiesMidArr);
+
+
 }
 
+function numberToProperties(digit, digitPositon) {
+    //this function will convert item (which is a number in string format) into array of 'number' object properties a-like
+    //example
+    //1 --> [_1]
+    //2 --> [_1, _1]
+    //3 --> [_1, _1, _1]
+    //4 --> [_1, _5]
+    //5 --> [_5]
+    //6 --> [_5, _1]
+    //7 --> [_5, _1, _1]
+    //8 --> [_5, _1, _1, _1]
+    //9 --> [_1, _10]
+    //0 -> ignored
+    let n = parseInt(digit);
+    switch (n) {
+        case 0:
+            return [];
+            break;
+        case 1:
+            return ["_1", digitPositon];
+            break;
+        case 2:
+            return ["_1", "_1", digitPositon];
+            break;
+        case 3:
+            return ["_1", "_1", "_1", digitPositon];
+            break;
+        case 4:
+            return ["_1", "_5", digitPositon];
+            break;
+        case 5:
+            return ["_5", digitPositon];
+            break;
+        case 6:
+            return ["_5", "_1", digitPositon];
+            break;
+        case 7:
+            return ["_5", "_1", "_1", digitPositon];
+            break;
+        case 8:
+            return ["_5", "_1", "_1", "_1", digitPositon];
+            break;
+        case 9:
+            return ["_1", "_10", digitPositon];
+            break;
+        default:
+            break;
+    }
+}
 //convertToRoman(36);
